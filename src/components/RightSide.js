@@ -8,7 +8,7 @@ const RightSide = (props) => {
                 
                 <Title>
                     <h2>Add to your feed</h2>
-                    <img src="/assets/feed-icon.svg" />
+                    <img src="/assets/feed-icon.svg" alt="linkedin-icons" />
                 </Title>
 
                 <FeedList>
@@ -34,11 +34,11 @@ const RightSide = (props) => {
 
                 <Recommendation>
                     View all recommendations
-                    <img src="/assets/right-icon.svg"  />
+                    <img src="/assets/right-icon.svg" alt="linkedin-icons" />
                 </Recommendation>
             </FollowCard>
             <BannerCard>
-                <img src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"/>
+                <img src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg" alt="linkedin-icons" />
             </BannerCard>
         </Container>
     );

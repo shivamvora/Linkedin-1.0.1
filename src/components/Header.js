@@ -1,12 +1,13 @@
+import { connect } from "react-redux";
 import styled from "styled-components";
-
+import { signOutAPI } from "../actions";
 const Header = (props) => {
   return (
     <Container>
       <Content>
         <Logo>
           <a href="/home">
-            <img src="/assets/home-logo.svg" alt="" />
+            <img src="/assets/home-logo.svg" alt="linkedin-icons" />
           </a>
         </Logo>
         <Search>
@@ -14,64 +15,71 @@ const Header = (props) => {
             <input type="text" placeholder="Search" />
           </div>
           <SearchIcon>
-            <img src="/assets/search-icon.svg" alt="" />
+            <img src="/assets/search-icon.svg" alt="linkedin-icons" />
           </SearchIcon>
         </Search>
         <Nav>
           <NavListWrap>
             <NavList className="active">
               <a>
-                <img src="/assets/nav-home.svg" alt="" />
+                <img src="/assets/nav-home.svg" alt="linkedin-icons" />
                 <span>Home</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="/assets/nav-network.svg" alt="" />
+                <img src="/assets/nav-network.svg" alt="linkedin-icons" />
                 <span>My Network</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="/assets/nav-jobs.svg" alt="" />
+                <img src="/assets/nav-jobs.svg" alt="linkedin-icons" />
                 <span>Jobs</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="/assets/nav-messaging.svg" alt="" />
+                <img src="/assets/nav-messaging.svg" alt="linkedin-icons" />
                 <span>Messaging</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="/assets/nav-notifications.svg" alt="" />
+                <img src="/assets/nav-notifications.svg" alt="linkedin-icons" />
                 <span>Notifications</span>
               </a>
             </NavList>
 
             <User>
               <a>
-                <img src="/assets/user.svg" alt="" />
-                <span>Me</span>
-                <img src="/assets/down-icon.svg" alt="" />
+                
+              {props.user && props.user.photoURL ? (
+              <img src={props.user.photoURL} style={{height:'48px',width:'50px'}}/>
+              ) : (
+              <img src="/assets/user.svg"   alt="linkedin-icons" />
+              )}
+               
+                <span>Me
+                <img src="/assets/down-icon.svg" alt="linkedin-icons" />
+                </span>
               </a>
 
-              <SignOut>
+              <SignOut onClick={() => props.signOut()}>
                 <a>Sign Out</a>
               </SignOut>
             </User>
 
             <Work>
               <a>
-                <img src="/assets/nav-work.svg" alt="" />
+                <img src="/assets/nav-work.svg"  alt="linkedin-icons" />
                 <span>
                   Work
-                  <img src="/assets/down-icon.svg" alt="" />
+                  <img src="/assets/down-icon.svg" alt="linkedin-icons" />
                 </span>
               </a>
             </Work>
@@ -251,4 +259,15 @@ const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 `;
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {  
+        user: state.userState.user,
+      };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(signOutAPI()),
+});
+
+ 
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

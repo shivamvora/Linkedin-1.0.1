@@ -26,7 +26,7 @@ const LeftSide = (props) => {
                 </Widget>
                 <Item>
                     <span>
-                        <img src="/assets/item-icon.svg"/>
+                        <img src="/assets/item-icon.svg" alt="linkedin-icons" />
                         My Items
                     </span>
                 </Item>
@@ -39,7 +39,7 @@ const LeftSide = (props) => {
                 <a>
                     <span>
                         Events
-                        <img src="/assets/plus-icon.svg" />
+                        <img src="/assets/plus-icon.svg" alt="linkedin-icons" />
                     </span>
                 </a>
                 <a>

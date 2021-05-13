@@ -5,28 +5,28 @@ const Main = (props) => {
             <Container>
                 <ShareBox>Share
                 <div>
-                    <img src="/assets/user.svg" />
+                    <img src="/assets/user.svg" alt="linkedin-icons" />
                     <button>Start a Post</button>
                 </div>
 
                 <div>
                     <button>
-                        <img src="/assets/photo-icon.svg" className="photo-icon"/>
+                        <img src="/assets/photo-icon.svg" alt="linkedin-icons" className="photo-icon"/>
                         <span>Photo</span>
                     </button>
 
                     <button>
-                        <img src="/assets/video.svg"  />
+                        <img src="/assets/video.svg" alt="linkedin-icons" />
                         <span>Video</span>
                     </button>
 
                     <button>
-                        <img src="/assets/event.svg"  />
+                        <img src="/assets/event.svg" alt="linkedin-icons" />
                         <span>Event</span>
                     </button>    
 
                     <button>
-                        <img src="/assets/article.svg"  />
+                        <img src="/assets/article.svg" alt="linkedin-icons" />
                         <span>Article</span>
                     </button>
                 </div>
@@ -35,7 +35,7 @@ const Main = (props) => {
                     <Article>
                         <SharedActor>
                             <a>
-                                <img src="/assets/user.svg"  />
+                                <img src="/assets/user.svg" alt="linkedin-icons" />
                                 <div>
                                     <span>Title</span>
                                     <span>Info</span>
@@ -43,22 +43,22 @@ const Main = (props) => {
                                 </div>
                             </a>
                             <button>
-                                <img src="assets/ellipsis.svg"  />
+                                <img src="assets/ellipsis.svg" alt="linkedin-icons" />
                             </button>
                         </SharedActor>
                         <Description>Description</Description>
                         <SharedImg>
                             <a>
-                                <img src="/assets/post.jpg" />
+                                <img src="/assets/post.jpg" alt="linkedin-icons" />
                             </a>
                         </SharedImg>
                         <SocialCount>
                             
                             <li>
                                 <button>
-                                    <img src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"  />
+                                    <img src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb" height="20px" alt="linkedin-icons" />
 
-                                    <img src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"  />
+                                    <img src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f" height="20px" alt="linkedin-icons"  />
                                     <span>95</span>
                                 </button>
                             </li>
@@ -66,19 +66,19 @@ const Main = (props) => {
                         </SocialCount>
                         <SocialActions>
                         <button>
-                            <img src="/assets/like.svg" alt="" />
+                            <img src="/assets/like.svg" alt="linkedin-icons" />
                             <span>Like</span>
                         </button>
                         <button>
-                            <img src="/assets/comments.svg" />
+                            <img src="/assets/comments.svg" alt="linkedin-icons" />
                             <span>Comments</span>
                         </button>
                         <button>
-                            <img src="/assets/share.svg" />
+                            <img src="/assets/share.svg" alt="linkedin-icons" />
                             <span>Share</span>
                         </button>
                         <button>
-                            <img src="/assets/send.svg" />
+                            <img src="/assets/send.svg" alt="linkedin-icons" />
                             <span>Send</span>
                         </button>
                         </SocialActions>
@@ -99,7 +99,7 @@ const CommonCard = styled.div`
     text-align:center;
     overflow:hidden;
     margin-bottom:8px;
-    background-color:#fff;.
+    background-color:#fff;
     border-radius:5px;
     position:relative;
     border:none;
@@ -150,6 +150,7 @@ const ShareBox = styled(CommonCard)`
         } 
         &:nth-child(2){
             display:flex;
+            background-color:white;
             flex-wrap:wrap;
             justify-content:space-around;
             padding-bottom:4px;
@@ -157,6 +158,8 @@ const ShareBox = styled(CommonCard)`
             button{
                 img{
                     margin:0 4px 0 -2px;
+                    
+                    
                 }
                 span{
                     color:#70b5f9;
@@ -255,7 +258,7 @@ const SocialCount = styled.ul`
   align-items:flex-start;
   overflow:auto;
   margin:0 16px;
-  padding:8px 0;
+  padding:10px 0;
   border-bottom:1px solid #e9e5df;
   list-style:none;
   li{
@@ -263,7 +266,7 @@ const SocialCount = styled.ul`
       font-size:12px;
       button{
           display:flex;
-
+          border:none;
       }
   }
 `;
@@ -280,6 +283,8 @@ const SocialActions = styled.div`
       align-items:center;
       padding:8px;
       color:#0a66c2;
+      border:none;
+      cursor:pointer;
       @media(min-width:768px){
           span{
               margin-left:10px;
