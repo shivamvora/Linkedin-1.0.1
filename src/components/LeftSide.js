@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import './Main.css';
 
 const LeftSide = (props) => {
     return(
