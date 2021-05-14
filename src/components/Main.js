@@ -1,11 +1,17 @@
-
-import { useState }from 'react';
+import { useEffect, useState }from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PostModal from './PostModal';
+import { getArticlesAPI } from '../actions';
+import ReactPlayer from 'react-player';
 
 
 const Main = (props) => {
     const [showModal, setShowModal] = useState("close");
+
+    useEffect(()=>{
+        props.getArticles();
+    },[]);
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -26,11 +32,20 @@ const Main = (props) => {
     };
 
     return(
+        <>
+        {
+            props.articles.length === 0 ? ( 
+            <p>There are no articles</p>
+            ) : ( 
             <Container>
-                <ShareBox>Share
-                <div>
+                <ShareBox>
+                    <div>
+                    { props.user && props.user.photoURL ?( 
+                    <img src={props.user.photoURL}/> 
+                    ) : (
                     <img src="/assets/user.svg" alt="linkedin-icons" />
-                    <button onClick={handleClick}>Start a Post</button>
+                    )}
+                    <button onClick={handleClick} disabled={props.loading ? true : false}>Start a Post</button>
                 </div>
 
                 <div>
@@ -55,25 +70,41 @@ const Main = (props) => {
                     </button>
                 </div>
                 </ShareBox>
-                <div>
-                    <Article>
-                        <SharedActor>
+                <Content>
+                    {
+                        props.loading && <img src={"./assets/Spinner-icon.svg"} />
+                    }
+                    {
+                        props.articles.length > 0 &&
+                        props.articles.map((article,key) => ( 
+                    
+                            <Article key={key}> 
+                                <SharedActor>
                             <a>
-                                <img src="/assets/user.svg" alt="linkedin-icons" />
+                                <img src={article.actor.image} alt="linkedin-icons" />
                                 <div>
-                                    <span>Title</span>
-                                    <span>Info</span>
-                                    <span>Date</span>
+                                    <span>{article.actor.title}</span>
+                                    <span>{article.actor.description}</span>
+                                    <span>{article.actor.date.toDate().toLocaleDateString()}</span>
                                 </div>
                             </a>
                             <button>
                                 <img src="assets/ellipsis.svg" alt="linkedin-icons" />
                             </button>
                         </SharedActor>
-                        <Description>Description</Description>
+                        <Description>{article.description}</Description>
                         <SharedImg>
                             <a>
-                                <img src="/assets/post.jpg" alt="linkedin-icons" />
+                                
+                                {
+                                    !article.sharedImg && article.video ? ( 
+                                    <ReactPlayer width={'100%'} url={article.video}/>
+                                    ) : ( 
+                                
+                                
+                                    article.sharedImg && <img src={article.sharedImg}/>
+                                )}
+                            
                             </a>
                         </SharedImg>
                         <SocialCount>
@@ -86,7 +117,7 @@ const Main = (props) => {
                                     <span>95</span>
                                 </button>
                             </li>
-                            <li><a>4 comments</a></li> 
+                            <li><a>{article.comments} comments</a></li> 
                         </SocialCount>
                         <SocialActions>
                         <button>
@@ -107,9 +138,13 @@ const Main = (props) => {
                         </button>
                         </SocialActions>
                     </Article>
+                        ))}
                     <PostModal showModal={showModal} handleClick={handleClick} />
-                </div>
+                    </Content>
+                
             </Container>
+            )}
+            </>
     );
 };
 
@@ -212,6 +247,7 @@ const SharedActor = styled.div`
         overflow:hidden;
         display:flex;
         text-decoration:none;
+        
 
         img {
             width:48px;
@@ -228,14 +264,14 @@ const SharedActor = styled.div`
             span{
                 text-align:left;
                 &:first-child{
-
-                    font-size:14px;
+                    
+                    font-size:18px;
                     font-weight:700;
                     color:rgba(0,0,0,1);
 
                 }
                 &:nth-child(n+1){
-                    font-size:12px;
+                    font-size:15px;
                     color:rgba(0,0,0,0.6);    
                 }
             }
@@ -309,6 +345,7 @@ const SocialActions = styled.div`
       color:#0a66c2;
       border:none;
       cursor:pointer;
+      background:white;
       @media(min-width:768px){
           span{
               margin-left:10px;
@@ -318,4 +355,24 @@ const SocialActions = styled.div`
   }
 `;
 
-export default Main;
+const Content = styled.div`
+  text-align:center;
+  & > img{
+      width:60px;
+
+  }
+`;
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.articleState.loading,
+        user: state.userState.user,
+        articles: state.articleState.articles,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    getArticles: () => dispatch(getArticlesAPI()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
