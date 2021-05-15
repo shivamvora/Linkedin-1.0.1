@@ -33,10 +33,10 @@ const Main = (props) => {
 
     return(
         <>
-        {
+        {/* {
             props.articles.length === 0 ? ( 
-            <p>There are no articles</p>
-            ) : ( 
+            <p>There are no articles</p> */}
+            {/* ) : (  */}
             <Container>
                 <ShareBox>
                     <div>
@@ -143,7 +143,7 @@ const Main = (props) => {
                     </Content>
                 
             </Container>
-            )}
+            {/* )} */}
             </>
     );
 };
