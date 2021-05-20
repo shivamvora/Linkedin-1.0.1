@@ -10,13 +10,7 @@ import firebase from 'firebase';
 //   };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdu94MuG6MH5AF-E2ys1ImMXvJYWl7al0",
-  authDomain: "linkedin-1-41c44.firebaseapp.com",
-  projectId: "linkedin-1-41c44",
-  storageBucket: "linkedin-1-41c44.appspot.com",
-  messagingSenderId: "177294270101",
-  appId: "1:177294270101:web:44b10394b6093dbc0f059c",
-  measurementId: "G-EG9TW19425"
+  // use your API'S Credentials
 };
 
   const firebaseApp = firebase.initializeApp(firebaseConfig);
