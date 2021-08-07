@@ -9,25 +9,34 @@ import firebase from 'firebase';
 //     appId: "1:805526211135:web:5007851c2868ce0843068a"
 //   };
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDdu94MuG6MH5AF-E2ys1ImMXvJYWl7al0",
+//   authDomain: "linkedin-1-41c44.firebaseapp.com",
+//   projectId: "linkedin-1-41c44",
+//   storageBucket: "linkedin-1-41c44.appspot.com",
+//   messagingSenderId: "177294270101",
+//   appId: "1:177294270101:web:44b10394b6093dbc0f059c",
+//   measurementId: "G-EG9TW19425"
+// };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDdu94MuG6MH5AF-E2ys1ImMXvJYWl7al0",
-  authDomain: "linkedin-1-41c44.firebaseapp.com",
-  projectId: "linkedin-1-41c44",
-  storageBucket: "linkedin-1-41c44.appspot.com",
-  messagingSenderId: "177294270101",
-  appId: "1:177294270101:web:44b10394b6093dbc0f059c",
-  measurementId: "G-EG9TW19425"
+  apiKey: "AIzaSyCyePFZSmRA6NjodNBqfmG4Opo6gImRmWg",
+  authDomain: "linkedin-clone-b9bc5.firebaseapp.com",
+  projectId: "linkedin-clone-b9bc5",
+  storageBucket: "linkedin-clone-b9bc5.appspot.com",
+  messagingSenderId: "11094273852",
+  appId: "1:11094273852:web:20212df5d41d888a4f7839"
 };
 
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp( firebaseConfig );
 
-  const db = firebaseApp.firestore();
+const db = firebaseApp.firestore();
 
-  const auth = firebase.auth();
+const auth = firebase.auth();
 
-  const provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
 
-  const storage = firebase.storage(); 
+const storage = firebase.storage();
 
-  export { auth, provider,storage };
-  export default db;
+export { auth, provider, storage };
+export default db;
